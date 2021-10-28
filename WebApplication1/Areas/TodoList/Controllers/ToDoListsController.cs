@@ -64,7 +64,14 @@ namespace WebApplication1.Areas.TodoList.Controllers
             {
                 return NotFound();
             }
-
+            else
+            {
+                toDoList.Titel = _protector.Unprotect(toDoList.Titel);
+                if (toDoList.Description != null)
+                {
+                    toDoList.Description = _protector.Unprotect(toDoList.Description);
+                }
+            }
             return View(toDoList);
         }
 
@@ -108,6 +115,14 @@ namespace WebApplication1.Areas.TodoList.Controllers
             {
                 return NotFound();
             }
+            else
+            {
+                toDoList.Titel = _protector.Unprotect(toDoList.Titel);
+                if (toDoList.Description != null)
+                {
+                    toDoList.Description = _protector.Unprotect(toDoList.Description);
+                }
+            }
             return View(toDoList);
         }
 
@@ -127,6 +142,11 @@ namespace WebApplication1.Areas.TodoList.Controllers
             {
                 try
                 {
+                    toDoList.Titel = _protector.Protect(toDoList.Titel);
+                    if (toDoList.Description != null)
+                    {
+                        toDoList.Description = _protector.Protect(toDoList.Description);
+                    }
                     _context.Update(toDoList);
                     await _context.SaveChangesAsync();
                 }
