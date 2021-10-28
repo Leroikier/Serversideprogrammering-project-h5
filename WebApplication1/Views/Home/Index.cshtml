@@ -5,11 +5,12 @@
 <div class="text-center">
 
     <form asp-action="Index" method="post">
-        <div>
+        <div>Hash</div>
+        @*        <div>
             <input type="text" name="myUsername" style="width: 200px;" />
-        </div>
+            </div>*@
         <div>
-            <input type="password" name="myPassword" style="width: 200px;" />
+            <input type="text" name="myPassword" style="width: 200px;" />
         </div>
         <div>
             <input type="submit" style="height: 50px; width: 200px;" />
@@ -18,11 +19,31 @@
 
     @if (Model != null)
     {
-        <h1 class="display-4">@Model.HashedValueAsString</h1>
         <h1 class="display-4">@Model.OriginalText</h1>
-        <h1 class="display-4">@Model.Username</h1>
+        <h1 class="display-4">@Model.HashedValueAsString</h1>
+       @* <h1 class="display-4">@Model.Username</h1>*@
     }
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <hr style="background-color: black" />
+    <div>Crypt</div>
+
+    <form asp-action="Index" method="post">
+        @*        <div>
+            <input type="text" name="myUsername" style="width: 200px;" />
+            </div>*@
+        <div>
+            <input type="text" name="myEncryption" style="width: 200px;" />
+        </div>
+        <div>
+            <input type="submit" style="height: 50px; width: 200px;" />
+        </div>
+    </form>
+
+        @if (Model != null)
+    {
+        <h1 class="display-4">@Model.OriginalEncryptionText</h1>
+        <h1 class="display-4">@Model.EncryptedValueAsString</h1>
+    }
 </div>
 
 <div>

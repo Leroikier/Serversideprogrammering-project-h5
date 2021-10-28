@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace WebApplication1.Areas.Database.Models
+namespace WebApplication1.Areas.TodoList.Models
 {
     public partial class TestDatabaseContext : DbContext
     {
@@ -17,6 +17,7 @@ namespace WebApplication1.Areas.Database.Models
         }
 
         public virtual DbSet<Login2> Login2s { get; set; } = null!;
+        public virtual DbSet<ToDoList> ToDoLists { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -44,6 +45,15 @@ namespace WebApplication1.Areas.Database.Models
                 entity.Property(e => e.User)
                     .HasMaxLength(50)
                     .HasColumnName("user");
+            });
+
+            modelBuilder.Entity<ToDoList>(entity =>
+            {
+                entity.ToTable("ToDoList");
+
+                entity.Property(e => e.Titel).HasMaxLength(50);
+
+                entity.Property(e => e.Username).HasMaxLength(256);
             });
 
             OnModelCreatingPartial(modelBuilder);

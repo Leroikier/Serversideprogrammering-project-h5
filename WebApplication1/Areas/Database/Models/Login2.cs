@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WebApplication1.Areas.Database.Models
 {
-    public partial class Login
+    public partial class Login2
     {
         public int Id { get; set; }
         public string User { get; set; } = null!;
